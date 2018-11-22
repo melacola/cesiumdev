@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Use correct character set. -->
+  <meta charset="utf-8">
+  <!-- Tell IE to use the latest, best version. -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Make the application on mobile take up the full browser screen and disable user scaling. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <title>MyWorld!</title>
+<!--   <script src="../Build/Cesium/Cesium.js"></script> -->
+  <script src="https://cesiumjs.org/releases/1.51/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesiumjs.org/releases/1.51/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="cesiumContainer" style="width: 1200px; height:800px"></div>
+  <script>
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJhMzE5NjMwNy1kYjkxLTQ1M2MtYmE3NC1hM2ViNTkwODM0MjYiLCJpZCI6NTIwNCwic2NvcGVzIjpbImFzciIsImdjIl0sImlhdCI6MTU0MjcwMjE4MX0.0kZlO9onff0bIPvWeHaPpEuQdTI3ElQEGIOFVzeh2xM';
+   
+	var viewer = new Cesium.Viewer('cesiumContainer', {
+		animation: false,		// 애니매이터 효과
+		timeline: false,		// 타임라인 효과
+		navigationHelpButton: false,	// 도움말 버튼표시
+		fullscreenButton: false,		// 전체확대 버튼표시
+
+
+   		terrainProvider : Cesium.createWorldTerrain({
+			requestWaterMask : false		// 워터마크 효과
+		})
+    });
+
+/*
+	var tileset = viewer.scene.primitives.add(
+		new Cesium.Cesium3DTileset({
+			url: Cesium.IonResource.fromAssetId(10497)
+		})
+	);
+*/
+
+
+	// img 파일로 만들어진 이미지를 CESIUM ion 
+var layer = viewer.imageryLayers.addImageryProvider(
+    new Cesium.IonImageryProvider({ assetId: 3827 })
+);
+
+    viewer.zoomTo(layer);
+  </script>
+</body>
+</html>
