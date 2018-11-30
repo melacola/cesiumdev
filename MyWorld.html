@@ -44,7 +44,13 @@ var layer = viewer.imageryLayers.addImageryProvider(
     new Cesium.IonImageryProvider({ assetId: 3827 })
 );
 
-    viewer.zoomTo(layer);
+var tileset = viewer.scene.primitives.add(
+    new Cesium.Cesium3DTileset({
+        url: Cesium.IonResource.fromAssetId(10725)
+    })
+);
+
+    viewer.zoomTo(tileset);
   </script>
 </body>
 </html>
